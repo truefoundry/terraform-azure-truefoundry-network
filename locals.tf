@@ -1,5 +1,5 @@
 locals {
-  vnet_name                     = "${var.cluster_name}-vnet"
+  vnet_name = "${var.cluster_name}-vnet"
   tags = merge(
     {
       "terraform-module" = "network"
