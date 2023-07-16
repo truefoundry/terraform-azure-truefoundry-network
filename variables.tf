@@ -28,6 +28,12 @@ variable "subnet_cidr" {
   type        = string
 }
 
+variable "use_for_each" {
+  description = "Use `for_each` instead of `count` to create multiple resource instances."
+  default = false
+  type = bool
+}
+
 variable "resource_group_name" {
   description = "Azure Resource Group"
   type        = string
