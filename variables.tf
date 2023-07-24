@@ -17,6 +17,12 @@ variable "subnet_id" {
   type        = string
 }
 
+variable "shim_vnet_name" {
+  description = "vnet name for the shim network"
+  type = string
+  default = ""
+}
+
 ### Non shim
 variable "vnet_cidr" {
   description = "The CIDR block for the VPC."
@@ -26,6 +32,11 @@ variable "vnet_cidr" {
 variable "subnet_cidr" {
   description = "Assigns IPv4 subnet"
   type        = string
+}
+
+variable "control_plane_enabled" {
+  description = "control plane enabled"
+  type = bool
 }
 
 variable "use_for_each" {
