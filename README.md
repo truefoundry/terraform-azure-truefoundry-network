@@ -30,11 +30,11 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | AWS EKS cluster name needed for Shared cluster | `string` | n/a | yes |
-| <a name="input_control_plane_enabled"></a> [control\_plane\_enabled](#input\_control\_plane\_enabled) | control plane enabled | `bool` | n/a | yes |
+| <a name="input_control_plane_enabled"></a> [control\_plane\_enabled](#input\_control\_plane\_enabled) | Flag to check Control plane enabled | `bool` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Vnet region | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Azure Resource Group | `string` | n/a | yes |
 | <a name="input_shim"></a> [shim](#input\_shim) | If true will not create the network and forward the input values to the same outputs. | `bool` | `false` | no |
-| <a name="input_shim_vnet_name"></a> [shim\_vnet\_name](#input\_shim\_vnet\_name) | vnet name for the shim network | `string` | `""` | no |
+| <a name="input_shim_vnet_name"></a> [shim\_vnet\_name](#input\_shim\_vnet\_name) | Vnet name for the shim network | `string` | `""` | no |
 | <a name="input_subnet_cidr"></a> [subnet\_cidr](#input\_subnet\_cidr) | Assigns IPv4 subnet | `string` | n/a | yes |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | SHIM: Subnet ID | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | AWS Tags common to all the resources created | `map(string)` | `{}` | no |
