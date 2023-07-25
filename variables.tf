@@ -18,9 +18,9 @@ variable "subnet_id" {
 }
 
 variable "shim_vnet_name" {
-  description = "vnet name for the shim network"
-  type = string
-  default = ""
+  description = "Vnet name for the shim network"
+  type        = string
+  default     = ""
 }
 
 ### Non shim
@@ -35,14 +35,14 @@ variable "subnet_cidr" {
 }
 
 variable "control_plane_enabled" {
-  description = "control plane enabled"
-  type = bool
+  description = "Flag to check Control plane enabled"
+  type        = bool
 }
 
 variable "use_for_each" {
   description = "Use `for_each` instead of `count` to create multiple resource instances."
-  default = false
-  type = bool
+  default     = false
+  type        = bool
 }
 
 variable "resource_group_name" {
