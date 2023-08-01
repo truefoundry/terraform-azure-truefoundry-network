@@ -18,5 +18,5 @@ output "subnet_id" {
 }
 
 output "db_private_dns_zone_id" {
-  value = azurerm_private_dns_zone.postgres_dns[0].id
+  value = var.control_plane_enabled ? azurerm_private_dns_zone.postgres_dns[0].id : ""
 }
