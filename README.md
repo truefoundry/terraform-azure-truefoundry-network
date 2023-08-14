@@ -4,13 +4,16 @@ Truefoundry Azure Network Module
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.4 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.69.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.69.0 |
 
 ## Modules
 
@@ -22,8 +25,8 @@ No requirements.
 
 | Name | Type |
 |------|------|
-| [azurerm_private_dns_zone.postgres_dns](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone) | resource |
-| [azurerm_private_dns_zone_virtual_network_link.postgres_dns_link](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone_virtual_network_link) | resource |
+| [azurerm_private_dns_zone.postgres_dns](https://registry.terraform.io/providers/hashicorp/azurerm/3.69.0/docs/resources/private_dns_zone) | resource |
+| [azurerm_private_dns_zone_virtual_network_link.postgres_dns_link](https://registry.terraform.io/providers/hashicorp/azurerm/3.69.0/docs/resources/private_dns_zone_virtual_network_link) | resource |
 
 ## Inputs
 
