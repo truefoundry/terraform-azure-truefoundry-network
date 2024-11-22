@@ -1,5 +1,5 @@
 locals {
-  vnet_name = var.shim ? var.shim_vnet_name : "${var.cluster_name}-vnet"
+  vnet_name = var.use_existing_vnet ? element(split("/", var.vnet_id), length(split("/", var.vnet_id)) - 1) : "${var.cluster_name}-vnet"
   tags = merge(
     {
       "terraform-module" = "terraform-azure-truefoundry-network"

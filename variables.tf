@@ -1,29 +1,31 @@
 ##################################################################################
-## Variables
+## Existing network
 ##################################################################################
-variable "shim" {
-  description = "If true will not create the network and forward the input values to the same outputs."
+variable "use_existing_vnet" {
+  description = "Flag to enable existing network"
   type        = bool
   default     = false
 }
-### Shim
-
 variable "vnet_id" {
-  description = "SHIM: VPC Id"
+  description = "VPC ID. Used only when use_existing_vnet is enabled"
   type        = string
+  validation {
+    condition     = length(var.vnet_id) == "" || var.use_existing_vnet
+    error_message = "Vnet ID can't be empty if use_existing_vnet is enabled"
+  }
 }
 variable "subnet_id" {
-  description = "SHIM: Subnet ID"
+  description = "Subnet ID. Used only when use_existing_vnet is enabled"
   type        = string
+  validation {
+    condition     = length(var.subnet_id) == "" || var.use_existing_vnet
+    error_message = "Subnet ID can't be empty if use_existing_vnet is enabled"
+  }
 }
 
-variable "shim_vnet_name" {
-  description = "Vnet name for the shim network"
-  type        = string
-  default     = ""
-}
-
-### Non shim
+##################################################################################
+## New network
+##################################################################################
 variable "vnet_cidr" {
   description = "The CIDR block for the VPC."
   type        = string
@@ -45,18 +47,21 @@ variable "use_for_each" {
   type        = bool
 }
 
+##################################################################################
+## Common
+##################################################################################
 variable "resource_group_name" {
   description = "Azure Resource Group"
   type        = string
 }
 
 variable "cluster_name" {
-  description = "AWS EKS cluster name needed for Shared cluster"
+  description = "Cluster name to generate the virtual network name"
   type        = string
 }
 
 variable "location" {
-  description = "Vnet region"
+  description = "Location to create the vnet"
   type        = string
 }
 

@@ -2,7 +2,7 @@
 # RESOURCES
 #############################################################################
 module "vnet" {
-  count   = var.shim ? 0 : 1
+  count   = var.use_existing_vnet ? 0 : 1
   source  = "Azure/vnet/azurerm"
   version = "4.1.0"
 
@@ -27,6 +27,6 @@ resource "azurerm_private_dns_zone_virtual_network_link" "postgres_dns_link" {
   count                 = var.control_plane_enabled ? 1 : 0
   name                  = "${replace(local.vnet_name, "-", "")}VnetZone.com"
   private_dns_zone_name = azurerm_private_dns_zone.postgres_dns[0].name
-  virtual_network_id    = var.shim ? var.vnet_id : module.vnet[0].vnet_id
+  virtual_network_id    = var.use_existing_vnet ? var.vnet_id : module.vnet[0].vnet_id
   resource_group_name   = var.resource_group_name
 }
