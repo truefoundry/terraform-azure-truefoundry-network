@@ -12,8 +12,11 @@ module "vnet" {
   address_space       = [var.vnet_cidr]
   vnet_name           = local.vnet_name
   subnet_prefixes     = [var.subnet_cidr]
-  subnet_names        = [substr("${local.vnet_name}-subnet", 0, 80)]
+  subnet_names        = [local.subnet_name]
   tags                = local.tags
+  subnet_service_endpoints = {
+    "${local.subnet_name}" = ["Microsoft.Storage"]
+  }
 }
 
 // creating a private dns zone
