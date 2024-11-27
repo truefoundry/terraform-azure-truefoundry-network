@@ -15,6 +15,7 @@ module "vnet" {
   subnet_names        = [local.subnet_name]
   tags                = local.tags
   subnet_service_endpoints = {
+    # tflint-ignore: terraform_deprecated_interpolation
     "${local.subnet_name}" = ["Microsoft.Storage"]
   }
 }
