@@ -24,3 +24,7 @@ output "vnet_start_ip_address" {
 output "vnet_end_ip_address" {
   value = var.use_existing_vnet ? cidrhost(data.azurerm_virtual_network.vnet[0].address_space[0], -1) : cidrhost(var.vnet_cidr, -1)
 }
+
+output "subnet_id" {
+  value = var.use_existing_vnet ? data.azurerm_subnet.subnet[0].id : module.vnet[0].vnet_subnets[0]
+}
