@@ -14,15 +14,6 @@ variable "vnet_id" {
     error_message = "Vnet ID can't be empty if use_existing_vnet is enabled"
   }
 }
-variable "subnet_id" {
-  description = "Subnet ID. Used only when use_existing_vnet is enabled"
-  type        = string
-  default     = ""
-  validation {
-    condition     = var.subnet_id == "" || var.use_existing_vnet
-    error_message = "Subnet ID can't be empty if use_existing_vnet is enabled"
-  }
-}
 
 ##################################################################################
 ## New network

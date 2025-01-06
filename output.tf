@@ -13,10 +13,6 @@ output "vnet_address_space" {
   value = var.use_existing_vnet ? [] : module.vnet[0].vnet_address_space
 }
 
-output "subnet_id" {
-  value = var.use_existing_vnet ? var.subnet_id : module.vnet[0].vnet_subnets[0]
-}
-
 output "db_private_dns_zone_id" {
   value = var.control_plane_enabled ? azurerm_private_dns_zone.postgres_dns[0].id : ""
 }
