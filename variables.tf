@@ -36,6 +36,30 @@ variable "subnet_cidr" {
   type        = string
 }
 
+variable "use_default_nat" {
+  description = "Flag to use default NAT gateway. If false, a NAT gateway will be created and associated with the subnet."
+  type        = bool
+  default     = true
+}
+
+variable "use_external_public_addresses" {
+  description = "Flag to use external public addresses. If true, var.external_public_addresses will be used for the public IP addresses of the NAT gateway. Only used if var.use_default_nat is false."
+  type        = bool
+  default     = false
+}
+
+variable "external_public_address_id" {
+  description = "External public address ID. If empty, a public IP will be created and associated with the NAT gateway. Only used if var.use_default_nat is false and var.use_external_public_addresses is true."
+  type        = string
+  default     = ""
+}
+
+variable "public_ip_address_sku" {
+  description = "SKU of the public IP address. Only used if var.use_default_nat is false and var.use_external_public_addresses is false."
+  type        = string
+  default     = "Standard"
+}
+
 variable "control_plane_enabled" {
   description = "Flag to check Control plane enabled"
   type        = bool

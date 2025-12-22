@@ -25,8 +25,12 @@ Truefoundry Azure Network Module
 
 | Name | Type |
 |------|------|
+| [azurerm_nat_gateway.nat_gateway](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/nat_gateway) | resource |
+| [azurerm_nat_gateway_public_ip_association.nat_gateway_public_ip_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/nat_gateway_public_ip_association) | resource |
 | [azurerm_private_dns_zone.postgres_dns](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone) | resource |
 | [azurerm_private_dns_zone_virtual_network_link.postgres_dns_link](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone_virtual_network_link) | resource |
+| [azurerm_public_ip.nat_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
+| [azurerm_subnet_nat_gateway_association.nat_gateway_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_nat_gateway_association) | resource |
 | [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
 
 ## Inputs
@@ -35,12 +39,16 @@ Truefoundry Azure Network Module
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name to generate the virtual network name | `string` | n/a | yes |
 | <a name="input_control_plane_enabled"></a> [control\_plane\_enabled](#input\_control\_plane\_enabled) | Flag to check Control plane enabled | `bool` | n/a | yes |
+| <a name="input_external_public_address_id"></a> [external\_public\_address\_id](#input\_external\_public\_address\_id) | External public address ID. If empty, a public IP will be created and associated with the NAT gateway. Only used if var.use\_default\_nat is false and var.use\_external\_public\_addresses is true. | `string` | `""` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location to create the vnet | `string` | n/a | yes |
+| <a name="input_public_ip_address_sku"></a> [public\_ip\_address\_sku](#input\_public\_ip\_address\_sku) | SKU of the public IP address. Only used if var.use\_default\_nat is false and var.use\_external\_public\_addresses is false. | `string` | `"Standard"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Azure Resource Group | `string` | n/a | yes |
 | <a name="input_subnet_cidr"></a> [subnet\_cidr](#input\_subnet\_cidr) | Assigns IPv4 subnet | `string` | n/a | yes |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID. Used only when use\_existing\_vnet is enabled | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | AWS Tags common to all the resources created | `map(string)` | `{}` | no |
+| <a name="input_use_default_nat"></a> [use\_default\_nat](#input\_use\_default\_nat) | Flag to use default NAT gateway. If false, a NAT gateway will be created and associated with the subnet. | `bool` | `true` | no |
 | <a name="input_use_existing_vnet"></a> [use\_existing\_vnet](#input\_use\_existing\_vnet) | Flag to enable existing network | `bool` | `false` | no |
+| <a name="input_use_external_public_addresses"></a> [use\_external\_public\_addresses](#input\_use\_external\_public\_addresses) | Flag to use external public addresses. If true, var.external\_public\_addresses will be used for the public IP addresses of the NAT gateway. Only used if var.use\_default\_nat is false. | `bool` | `false` | no |
 | <a name="input_use_for_each"></a> [use\_for\_each](#input\_use\_for\_each) | Use `for_each` instead of `count` to create multiple resource instances. | `bool` | `false` | no |
 | <a name="input_vnet_cidr"></a> [vnet\_cidr](#input\_vnet\_cidr) | The CIDR block for the VPC. | `string` | n/a | yes |
 | <a name="input_vnet_id"></a> [vnet\_id](#input\_vnet\_id) | VPC ID. Used only when use\_existing\_vnet is enabled | `string` | n/a | yes |
