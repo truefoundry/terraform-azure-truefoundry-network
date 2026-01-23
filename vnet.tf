@@ -22,7 +22,7 @@ module "vnet" {
 
 // Custom NAT gateway
 resource "azurerm_public_ip" "nat_ip" {
-  count               = !var.use_default_nat && var.use_external_public_addresses ? 1 : 0
+  count               = var.use_default_nat ? 0 : var.use_external_public_addresses ? 0 : 1
   name                = "${var.cluster_name}-nat-ip"
   resource_group_name = var.resource_group_name
   location            = var.location
