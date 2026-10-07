@@ -71,6 +71,18 @@ variable "use_for_each" {
   type        = bool
 }
 
+variable "subnet_enforce_private_link_endpoint_network_policies" {
+  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Set to `true` to allow Private Endpoints in the subnet. The subnet created by this module is named `<cluster_name>-vnet-subnet`, truncated to 80 characters. Default value is false."
+  type        = map(bool)
+  default     = {}
+}
+
+variable "subnet_enforce_private_link_service_network_policies" {
+  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link service on the subnet. Set to `true` to allow a Private Link Service in the subnet. The subnet created by this module is named `<cluster_name>-vnet-subnet`, truncated to 80 characters. Default value is false."
+  type        = map(bool)
+  default     = {}
+}
+
 ##################################################################################
 ## Common
 ##################################################################################
