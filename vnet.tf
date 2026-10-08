@@ -18,6 +18,9 @@ module "vnet" {
     # tflint-ignore: terraform_deprecated_interpolation
     "${local.subnet_name}" = ["Microsoft.Storage"]
   }
+
+  subnet_enforce_private_link_endpoint_network_policies = var.subnet_enforce_private_link_endpoint_network_policies
+  subnet_enforce_private_link_service_network_policies  = var.subnet_enforce_private_link_service_network_policies
 }
 
 // Custom NAT gateway
